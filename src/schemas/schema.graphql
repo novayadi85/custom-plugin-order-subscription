@@ -1,0 +1,115 @@
+"Additional order fields"
+input autoRenewOrderFieldsInput {
+  "The user agent string for the browser from which this order was placed"
+  isAutorenewal: Boolean
+}
+
+extend input OrderInput {
+  "Additional order fields"
+  customFields: autoRenewOrderFieldsInput
+}
+
+extend type Order {
+  "The user agent string for the browser from which this order was placed"
+  isAutorenewal: Boolean
+}
+
+enum RecurringStatus{
+  pending
+  cancel
+  active
+  awaiting
+}
+
+"A Recurring data"
+type Recurring {
+  "Recurring code ID"
+  _id: ID!
+   
+  shopId: ID!
+
+  shop: Shop!
+
+  "Order item ID" 
+  referenceId: ID!
+
+  cartId: ID 
+
+  items: [OrderItem]
+
+  account: Account
+
+  type: Int
+
+  billing_on: DateTime 
+
+  activated_on: DateTime 
+
+  trial_days: Int 
+
+  trial_ends_on: DateTime 
+
+  status: RecurringStatus!
+
+  orderId: ID!
+
+  createdAt: DateTime! 
+
+  updatedAt: DateTime!
+}
+
+
+type RecurringConnection {
+  "The list of nodes that match the query, wrapped in an edge to provide a cursor string for each"
+  edges: [RecurringEdge]
+
+  nodes: [Recurring]
+
+  "Information to help a client request the next or previous page"
+  pageInfo: PageInfo!
+
+  "The total number of nodes that match your query"
+  totalCount: Int!
+}
+
+"Input type for filters to be applied to an Recurring list"
+input RecurringFilterInput {
+  "Keywords typed by the user in the search input field"
+  searchField: String
+}
+
+"A connection edge in which each node is a `Recurring` object"
+type RecurringEdge {
+  "The cursor that represents this node in the paginated results"
+  cursor: ConnectionCursor!
+
+  "The Recurring"
+  node: Recurring
+}
+
+extend type Query {
+  "Gets Recurring list"
+  recurrings(
+    "Provide a shop ID from which you want to get discount codes"
+    shopId: ID!
+
+    "Filters to apply to a Recurring query"
+    filters: RecurringFilterInput 
+
+    "Return only results that come after this cursor. Use this with `first` to specify the number of results to return."
+    after: ConnectionCursor,
+
+    "Return only results that come before this cursor. Use this with `last` to specify the number of results to return."
+    before: ConnectionCursor,
+
+    "Return at most this many results. This parameter may be used with either `after` or `offset` parameters."
+    first: ConnectionLimitInt,
+
+    "Return at most this many results. This parameter may be used with the `before` parameter."
+    last: ConnectionLimitInt,
+
+    "Return only results that come after the Nth result. This parameter may be used with the `first` parameter."
+    offset: Int,
+  ): RecurringConnection
+
+}

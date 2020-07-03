@@ -1,5 +1,5 @@
 {
-  "name": "@reactioncommerce/api-plugin-example",
+  "name": "@reactioncommerce/custom-plugin-order-subscription",
   "description": "Boilerplate Example plugin for the Reaction API",
   "version": "0.0.0-development",
   "main": "index.js",
@@ -7,21 +7,21 @@
   "engines": {
     "node": ">=12.14.1"
   },
-  "homepage": "https://github.com/reactioncommerce/api-plugin-example",
-  "url": "https://github.com/reactioncommerce/api-plugin-example",
-  "email": "engineering@reactioncommerce.com",
+  "homepage": "https://github.com/novayadi85/custom-plugin-order-subscription",
+  "url": "https://github.com/novayadi85/custom-plugin-order-subscription",
+  "email": "novayadi85@gmail.com",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/reactioncommerce/api-plugin-example.git"
+    "url": "git+https://github.com/novayadi85/custom-plugin-order-subscription.git"
   },
   "author": {
-    "name": "Reaction Commerce",
-    "email": "engineering@reactioncommerce.com",
-    "url": "https://reactioncommerce.com"
+    "name": "Novayadi Komang",
+    "email": "novayadi85@gmail.com",
+    "url": "https://novayadi.com"
   },
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/reactioncommerce/api-plugin-example/issues"
+    "url": "https://github.com/novayadi85/custom-plugin-order-subscription/issues"
   },
   "sideEffects": false,
   "dependencies": {
@@ -63,11 +63,6 @@
     "extends": [
       "@commitlint/config-conventional"
     ]
-  },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
-    }
   },
   "prettier": {
     "arrowParens": "always"
